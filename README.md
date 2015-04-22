@@ -38,13 +38,13 @@ If you wish to build MacDown yourself, you will need the following components/to
 
 * OS X SDK (10.8 or later)
 * Git
-* [Bundler](http://bundler.io)
+* [CocoaPods](http://cocoapods.org)
 
 You may also need to install Xcode’s command line tools with the following command:
 
     xcode-select --install
 
-> Note: Due to an [upstream bug](https://github.com/CocoaPods/CocoaPods/issues/2559), Xcode will fail to build certain dependencies if you use the latest version of CocoaPods (0.36+ at the time of writing). To avoid the problem we use a Gemfile to specify the version, and thus you should add `bundle exec` before running a CocoaPods command.
+> Note: Due to an [upstream bug](https://github.com/CocoaPods/CocoaPods/issues/2559), Xcode will fail to build certain dependencies if you use the latest version of CocoaPods (0.35 at the time of writing). To avoid the problem and build the project correctly, you need to install an older version of CocoaPods (0.34.4 is recommended), and use that to build the dependencies instead. See [comment in issue #220](https://github.com/uranusjr/macdown/issues/220#issuecomment-65014799) for detailed instructions.
 
 An appropriate SDK should be bundled with Xcode 5 or later versions.
 
@@ -54,15 +54,14 @@ After cloning the repository, run the following commands inside the repository r
 
     git submodule init
     git submodule update
-    bundle install
-    bundle exec pod install
+    pod install
 
 and open `MacDown.xcworkspace` in Xcode. The first command initialises the dependency submodule(s) used in MacDown; the second one installs dependencies managed by CocoaPods.
 
 Refer to the official guides of Git and CocoaPods if you need more instructions. If you run into build issues later on, try running the following commands to update dependencies:
 
     git submodule update
-    bundle exec pod install
+    pod install
 
 ## Discussion
 
@@ -73,8 +72,3 @@ Join our [Gitter channel](https://gitter.im/uranusjr/macdown?utm_source=share-li
 You can also [file an issue directly](https://github.com/uranusjr/macdown/issues/new) on GitHub if you prefer so. But please, **search first to make sure no-one has reported the same issue already** before opening one yourself. MacDown does not update in your computer immediately when we make changes, so something you experienced might be known, or even fixed in the development version.
 
 MacDown depends a lot on other open source projects, such as [Hoedown](https://github.com/hoedown/hoedown) for Markdown-to-HTML rendering, [Prism](http://prismjs.com) for syntax highlighting (in code blocks), and [PEG Markdown Highlight](https://github.com/ali-rantakari/peg-markdown-highlight) for editor highlighting. If you find problems when using those particular features, you can also consider reporting them directly to upstream projects as well as to MacDown’s issue tracker. I will do what I can if you report it here, but sometimes it can be more beneficial to interact with them directly.
-
-## Tipping
-
-If you find MacDown suitable for your needs, please consider [giving me a tip through PayPal](http://macdown.uranusjr.com/faq/#donation). Or, if you perfer to buy me a drink *personally* instead, just [send me a tweet](https://twitter.com/uranusjr) when you visit [Taipei, Taiwan](http://en.wikipedia.org/wiki/Taipei), where I live. I look forward to meeting you!
-
